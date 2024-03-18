@@ -16,7 +16,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <jdk.version>1.8</jdk.version>
+    <jdk.version>17</jdk.version>
   </properties>
 
   <dependencies>
@@ -51,12 +51,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-plugin-plugin</artifactId>
-          <version>3.6.0</version>
+          <version>3.11.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.8.2</version>
+          <version>3.12.1</version>
         </plugin>
         <plugin>
           <groupId>org.eclipse.m2e</groupId>
@@ -69,7 +69,7 @@
                   <pluginExecutionFilter>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-plugin-plugin</artifactId>
-                    <versionRange>[3.6.0,)</versionRange>
+                    <versionRange>[3.11.0,)</versionRange>
                     <goals>
                       <goal>descriptor</goal>
                     </goals>
@@ -87,11 +87,15 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-plugin-plugin</artifactId>
+        <artifactId>maven-plugin-plugin</artifactId>  
+        <configuration>
+          <goalPrefix>plugin</goalPrefix>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.12.1</version>
         <configuration>
           <source>${jdk.version}</source>
           <target>${jdk.version}</target>
@@ -100,7 +104,7 @@
       <plugin>
 	    <groupId>org.apache.maven.plugins</groupId>
 	    <artifactId>maven-source-plugin</artifactId>
-	    <version>3.0.1</version>
+	    <version>3.3.0</version>
 	    <executions>
 	      <execution>
 	        <id>attach-sources</id>
@@ -113,7 +117,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.1.1</version>
+        <version>3.6.3</version>
         <configuration>
             <source>${jdk.version}</source>
         </configuration>
@@ -153,7 +157,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
-					<version>1.6</version>
+					<version>3.1.0</version>
 					<executions>
 						<execution>
 							<id>sign-artifacts</id>
@@ -174,7 +178,7 @@
 	<profile>
         <id>disable-java8-doclint</id>
         <activation>
-            <jdk>[1.8,)</jdk>
+            <jdk>[17,)</jdk>
         </activation>
         <properties>
             <doclint>none</doclint>
